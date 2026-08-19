@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Radix Mauve neutral palette + Indigo accent.
+  Steps 1-2  -> main backgrounds
+  Steps 3-5  -> interactive component backgrounds / hover
+  Steps 6-8  -> borders & separators
+  Steps 9-10 -> solid backgrounds / disabled
+  Step 11    -> secondary text, links
+  Step 12    -> high-contrast primary text
+*/
+
+:root {
+  /* Mauve — Light */
+  --mauve-1: #fdfcfd;
+  --mauve-2: #faf9fb;
+  --mauve-3: #f2eff3;
+  --mauve-4: #eae7ec;
+  --mauve-5: #e3dfe6;
+  --mauve-6: #dbd8e0;
+  --mauve-7: #d0cdd7;
+  --mauve-8: #bcbac7;
+  --mauve-9: #8e8c99;
+  --mauve-10: #84828e;
+  --mauve-11: #65636d;
+  --mauve-12: #211f26;
+
+  /* Indigo accent */
+  --accent-9: #3b4a9c;
+  --accent-10: #33418c;
+  --accent-11: #3a52b8;
+  --accent-contrast: #ffffff;
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Mauve — Dark (official Radix values) */
+  --mauve-1: #121113;
+  --mauve-2: #1a191b;
+  --mauve-3: #232225;
+  --mauve-4: #2b292d;
+  --mauve-5: #323035;
+  --mauve-6: #3c393f;
+  --mauve-7: #49474e;
+  --mauve-8: #625f69;
+  --mauve-9: #6f6d78;
+  --mauve-10: #7c7a85;
+  --mauve-11: #b5b2bc;
+  --mauve-12: #eeeef0;
+
+  /* Iris accent — dark (deeper navy tone) */
+  /* Custom accent — dark */
+  --accent-9: #5764aa;
+  --accent-10: #4b5794;
+  --accent-11: #a8b2e0;
+  --accent-contrast: #ffffff;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), var(--font-inter), sans-serif;
+
+  --color-mauve-1: var(--mauve-1);
+  --color-mauve-2: var(--mauve-2);
+  --color-mauve-3: var(--mauve-3);
+  --color-mauve-4: var(--mauve-4);
+  --color-mauve-5: var(--mauve-5);
+  --color-mauve-6: var(--mauve-6);
+  --color-mauve-7: var(--mauve-7);
+  --color-mauve-8: var(--mauve-8);
+  --color-mauve-9: var(--mauve-9);
+  --color-mauve-10: var(--mauve-10);
+  --color-mauve-11: var(--mauve-11);
+  --color-mauve-12: var(--mauve-12);
+
+  --color-accent-9: var(--accent-9);
+  --color-accent-10: var(--accent-10);
+  --color-accent-11: var(--accent-11);
+  --color-accent-contrast: var(--accent-contrast);
+
+  /* Semantic aliases */
+  --color-background: var(--mauve-1);
+  --color-foreground: var(--mauve-12);
+  --color-border: var(--mauve-6);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--mauve-6);
+  }
+  body {
+    background-color: var(--mauve-1);
+    color: var(--mauve-12);
+  }
+  /* Fast, near-instant interactions only */
+  a,
+  button {
+    transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: 120ms;
+    transition-timing-function: ease-out;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /*
+    Reveal on enter — quick and subtle (translateY 8px + opacity).
+    Duration capped at 180ms, ease-out. Stagger is driven by an inline
+    transition-delay set per item (30-50ms steps).
+  */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 180ms ease-out,
+      transform 180ms ease-out;
+    will-change: opacity, transform;
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Card micro-interaction on hover — light lift + stronger shadow. */
+  .card-hover {
+    transition:
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-9);
+    box-shadow: 0 16px 36px -12px rgba(59, 74, 156, 0.22);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 16px 36px -12px rgba(87, 100, 170, 0.35);
+  }
+
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s infinite ease-in-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-title,
+    .animate-pulse-glow {
+      animation: none;
+    }
+  }
+  /* =========================================================
+   HERO — Elegant entrance animation
+   ========================================================= */
+
+  @keyframes hero-photo-in {
+    from {
+      opacity: 0;
+      transform: scale(0.94);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes hero-item-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-photo {
+    animation: hero-photo-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Common animation */
+  .hero-item {
+    opacity: 0;
+    animation: hero-item-in 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Small, intentional stagger */
+  .hero-role {
+    animation-delay: 70ms;
+  }
+
+  .hero-title {
+    animation-delay: 120ms;
+  }
+
+  .hero-description {
+    animation-delay: 180ms;
+  }
+
+  .hero-actions {
+    animation-delay: 250ms;
+  }
+
+
+  /* =========================================================
+     Very subtle photo presence
+     ========================================================= */
+
+  .hero-photo > div {
+    box-shadow:
+            0 0 0 1px var(--mauve-6),
+            0 12px 35px -20px rgba(59, 74, 156, 0.35);
+  }
+
+
+  /* =========================================================
+     Reduced motion
+     ========================================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-photo,
+    .hero-item {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+  /* Respect users who prefer no motion.
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .card-hover {
+      transition: none;
+    }
+    .card-hover:hover {
+      transform: none;
+    }
+  }*/
+
+}
