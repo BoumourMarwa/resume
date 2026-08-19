@@ -263,7 +263,7 @@ function ExperienceTimelineItem({
           {item.image ? (
             <div className="relative h-full w-full p-1.5 flex items-center justify-center">
               <Image
-                src={item.image}
+                src={BASE_PATH + item.image}
                 alt={`Logo ${item.company}`}
                 fill
                 sizes="(min-width: 768px) 96px, 64px"
