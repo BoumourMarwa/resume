@@ -43,6 +43,7 @@ export function ProjectsSection() {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const BASE_PATH = "/resume";
   return (
     <Reveal
       as="article"
@@ -52,7 +53,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Top Visual Compartment matching the reference card design */}
       <div className="relative aspect-[4/3] w-full bg-[#f2f1ee] dark:bg-mauve-3/50 p-3.5 flex items-center justify-center overflow-hidden border-b-2 border-mauve-6/60">        <div className="relative h-full w-full overflow-hidden rounded-[16px] border border-black/10 dark:border-white/10 shadow-sm">
           <Image
-            src={project.image || "/placeholder.svg"}
+            src={BASE_PATH + (project.image || "/placeholder.svg")}
             alt={`Aperçu du projet ${project.title}`}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"

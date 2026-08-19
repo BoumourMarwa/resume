@@ -139,6 +139,7 @@ function EducationTimelineItem({
   index: number
   isEven: boolean
 }) {
+  const BASE_PATH = "/resume";
   return (
     <div className="relative flex flex-col md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8 group">
       {/* LEFT COLUMN (Desktop: visible when isEven) */}
@@ -152,7 +153,7 @@ function EducationTimelineItem({
           {item.image ? (
             <div className="relative h-full w-full p-1.5 flex items-center justify-center">
               <Image
-                src={item.image}
+                src={BASE_PATH + item.image}
                 alt={`Logo ${item.school}`}
                 fill
                 sizes="(min-width: 768px) 96px, 64px"
