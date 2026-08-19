@@ -1,7 +1,3 @@
-// ---------------------------------------------------------------------------
-// Central content for the portfolio. Edit these arrays to update the site.
-// ---------------------------------------------------------------------------
-
 export type Education = {
   title: string
   school: string
