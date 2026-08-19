@@ -15,7 +15,7 @@ export function HeroSection() {
           <div className="hero-photo shrink-0">
             <div className="relative h-36 w-36 overflow-hidden rounded-full border-2 border-mauve-6 md:h-44 md:w-44">
               <Image
-                  src={BASE_PATH + "/profile.jpg"}
+                  src={"/profile.jpg"}
                   alt="Portrait de Marwa Boumour"
                   fill
                   sizes="176px"

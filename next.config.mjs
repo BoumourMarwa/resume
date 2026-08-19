@@ -3,8 +3,6 @@
 const nextConfig = {
   output: 'export',
 
-  basePath: '/resume',
-  assetPrefix: '/resume/',
   trailingSlash: true,
 
   typescript: {
