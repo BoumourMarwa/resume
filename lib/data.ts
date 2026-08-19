@@ -176,7 +176,7 @@ export const projects: Project[] = [
     title: "Nine Men's Morris",
     subtitle: "Jeu de stratégie développé en C avec interface graphique et IA",
     description:
-        "Implémentation complète du jeu de Moulin avec une interface graphique interactive développée en C et SDL. Le projet intègre une IA pour affronter le joueur et a été compilé en WebAssembly avec Emscripten afin de permettre son exécution directement dans un navigateur.",
+        "Implémentation complète du jeu de Moulin avec une interface graphique interactive développée en C et SDL.",
     image: "/projects/moulin.jpg",
     tags: ["C", "SDL2", "IA", "WebAssembly", "Emscripten"],
     github: "https://github.com/BoumourMarwa/nine-mens-morris",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
     title: "DevEvent",
     subtitle: "Plateforme web de découverte et de gestion d'événements pour développeurs",
     description:
-        "Application full-stack permettant de découvrir des événements tech, consulter leurs détails, s'inscrire et accéder à des événements similaires. Le projet intègre une API REST, une base de données MongoDB, le stockage d'images avec Cloudinary et le suivi des interactions utilisateurs avec PostHog.",
+        "Application full-stack permettant de découvrir des events tech, consulter leurs détails, s'inscrire et accéder à des events similaires.",
     image: "/projects/event.jpeg",
     tags: ["Next.js", "TypeScript", "MongoDB", "Mongoose", "Cloudinary", "Tailwind CSS", "PostHog"],
     github: "https://github.com/BoumourMarwa/DevEvent",
@@ -195,7 +195,7 @@ export const projects: Project[] = [
   {
     title: "Gestion du bibliothèque",
     subtitle: "Application en ligne de commande pour la gestion des adhérents, des livres et des emprunts",
-    description:"Application développée en C permettant de gérer les adhérents et les livres, ainsi que les opérations d’emprunt et de retour. Les données sont sauvegardées dans des fichiers JSON et l'application peut être exécutée localement ou via Docker.",
+    description:"Application développée en C permettant de gérer les adhérents et les livres, ainsi que les opérations d’emprunt et de retour.",
     image: "/projects/gestionlivre.png",
     tags: ["C", "JSON", "Docker"],
     github: "https://github.com/BoumourMarwa/borrow-books-manager",
