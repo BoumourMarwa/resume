@@ -26,7 +26,7 @@ export function ProjectsSection() {
               Portfolio
             </h2>
             <p className="mt-3 text-sm italic text-mauve-11 md:text-base max-w-2xl mx-auto">
-              Ci-dessous, quelques exemples de réalisations effectuées durant la formation, le stage et plus encore :
+              Ci-dessous, une sélection de quelques-unes de mes réalisations :
             </p>
           </Reveal>
         </div>
