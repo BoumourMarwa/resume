@@ -129,7 +129,7 @@ export function CareerSection() {
 /* -------------------------------------------------------------------------- */
 /* Education Timeline Item Component                                          */
 /* -------------------------------------------------------------------------- */
-const BASE_PATH = "/resume";
+
 function EducationTimelineItem({
   item,
   index,
@@ -153,7 +153,7 @@ function EducationTimelineItem({
           {item.image ? (
             <div className="relative h-full w-full p-1.5 flex items-center justify-center">
               <Image
-                src={BASE_PATH + item.image}
+                src={item.image}
                 alt={`Logo ${item.school}`}
                 fill
                 sizes="(min-width: 768px) 96px, 64px"
@@ -263,7 +263,7 @@ function ExperienceTimelineItem({
           {item.image ? (
             <div className="relative h-full w-full p-1.5 flex items-center justify-center">
               <Image
-                src={BASE_PATH + item.image}
+                src={item.image}
                 alt={`Logo ${item.company}`}
                 fill
                 sizes="(min-width: 768px) 96px, 64px"
