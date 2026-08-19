@@ -129,7 +129,7 @@ export function CareerSection() {
 /* -------------------------------------------------------------------------- */
 /* Education Timeline Item Component                                          */
 /* -------------------------------------------------------------------------- */
-
+const BASE_PATH = "/resume";
 function EducationTimelineItem({
   item,
   index,
@@ -139,7 +139,7 @@ function EducationTimelineItem({
   index: number
   isEven: boolean
 }) {
-  const BASE_PATH = "/resume";
+ 
   return (
     <div className="relative flex flex-col md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8 group">
       {/* LEFT COLUMN (Desktop: visible when isEven) */}
